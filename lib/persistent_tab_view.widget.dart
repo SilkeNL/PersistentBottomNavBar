@@ -106,7 +106,9 @@ class PersistentTabView extends PersistentTabViewBase {
     double navBarHeight = kBottomNavigationBarHeight,
   })  : assert(itemCount == screens.length,
             "screens and items length should be same. If you are using the onPressed callback function of 'PersistentBottomNavBarItem', enter a dummy screen like Container() in its place in the screens"),
-        assert(handleAndroidBackButtonPress && onWillPop != null,
+        assert(
+             handleAndroidBackButtonPress && onWillPop == null ||
+                 !handleAndroidBackButtonPress && onWillPop != null,
             "If you declare the onWillPop function, you will have to handle the back function functionality yourself as your onWillPop function will override the defualt function."),
         super(
           key: key,
